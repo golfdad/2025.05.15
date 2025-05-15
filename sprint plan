@@ -1,0 +1,161 @@
+# 🏄‍♂️ InsightLens – Sprint Plan (Windsurf Compatible)
+
+Comprehensive 6-week sprint roadmap for delivering the MVP of InsightLens using agile sprints inside **Windsurf**.
+
+---
+
+## 👥 Team Composition
+
+- **1 Product Manager (PM)**
+- **1 UX/UI Designer**
+- **2 Frontend Engineers**
+- **2 Backend Engineers**
+- **1 Data/NLP Engineer**
+- **1 DevOps / Infra Engineer**
+
+---
+
+## 📆 Sprint Timeline Overview
+
+| Week | Phase              | Focus                                | Key Deliverables                    |
+|------|--------------------|---------------------------------------|-------------------------------------|
+| 0    | Sprint 0           | Planning, Setup, Design               | Wireframes, Data Model, Infra       |
+| 1–2  | Sprint 1           | Query input, ingestion, MVP pipeline | Query → RawMention → Preview UI     |
+| 3–4  | Sprint 2           | NLP Enrichment, insights UI          | Sentiment, Personas, Clusters       |
+| 5–6  | Sprint 3           | Dashboard polish, export, API        | Export, Admin, Embedding API        |
+| 7    | Hardening & Demo   | QA, polish, internal feedback loop   | Finalized UI, Insight demos         |
+
+---
+
+## 🧭 Sprint 0 – Pre-Kickoff (Week 0)
+
+### 🎯 Goals:
+- Finalize MVP scope
+- Prioritize backlog
+- Confirm architecture
+- Set up environments
+
+### ✅ Deliverables:
+- Product backlog loaded into Windsurf
+- UX wireframes for query + dashboard
+- Finalized data model and API contracts
+- Dev environments, repo, CI/CD pipelines
+
+---
+
+## 🚀 Sprint 1 – Core Pipeline & Query Foundation (Weeks 1–2)
+
+### 🎯 Sprint Goal:
+Establish full flow from query input to raw data preview.
+
+### ✅ User Stories:
+- [1.1] Natural language query input (UI)
+- [1.2] Backend intent parser → `ParsedIntent`
+- [2.1] Ingest data from Twitter, Reddit, News
+- [2.2] Save to `RawMention`
+- [3.1] Clean + store in `EnrichedMention`
+- [5.1] Basic dashboard for visualizing raw insights
+
+### 🔧 Tech Tasks:
+- Setup databases (Postgres/Mongo) and S3 bucket
+- Connect to APIs and test web scrapers
+- Integrate GPT for query parsing
+
+### 🎨 Design:
+- Query input bar
+- Data preview & insight scaffolding
+
+---
+
+## 🧠 Sprint 2 – NLP Enrichment + Basic Insights (Weeks 3–4)
+
+### 🎯 Sprint Goal:
+Extract and display meaningful insights.
+
+### ✅ User Stories:
+- [3.2] Sentiment classification (`SentimentScore`)
+- [4.1] Narrative clustering (`NarrativeCluster`)
+- [4.2] Generate basic persona segments (`PersonaCluster`)
+- [5.1] Visualize sentiment and clusters
+- [8.1] GPT-generated summaries and opportunities
+
+### 🔧 Tech Tasks:
+- Integrate HuggingFace models
+- Build pipeline for clustering
+- Enable GPT summaries from clusters
+
+### 🎨 Design:
+- Persona cards
+- Sentiment graphs
+- Cluster map
+
+---
+
+## 📊 Sprint 3 – Frontend Polish + Admin + Export (Weeks 5–6)
+
+### 🎯 Sprint Goal:
+Complete MVP experience and control tools.
+
+### ✅ User Stories:
+- [5.2] Export insights (PDF, CSV)
+- [6.1] Admin: manage sources (`DataSource`)
+- [7.1] User login, history view
+- [9.1] Output quality scoring
+- [10.1] API access for external use
+
+### 🔧 Tech Tasks:
+- Add OAuth login and session tracking
+- Build export module (PDF, CSV)
+- Admin UI for source metrics
+
+### 🎨 Design:
+- Insight export UX
+- Admin dashboard
+- User query history
+
+---
+
+## 🛠️ Hardening Week + Demo (Optional Week 7)
+
+### 🎯 Goals:
+- Bug fixes and final polish
+- Internal testing + feedback
+- Demo preparation
+
+### ✅ Deliverables:
+- End-to-end tested version on staging
+- Demo use cases (e.g., “Tesla in Europe”)
+- Internal walkthrough and feedback loop
+
+---
+
+## 🧰 Tools & Tech Stack
+
+- **Frontend**: React, Tailwind, TypeScript
+- **Backend**: Python/FastAPI or Node.js
+- **Database**: PostgreSQL, MongoDB, S3 (data lake)
+- **NLP Models**: OpenAI GPT-4, BERTopic, Sentence-BERT, Hugging Face
+- **Infra**: Docker, Kubernetes, GitHub Actions, GCP or AWS
+- **CI/CD**: GitHub Actions or CircleCI
+- **Project Mgmt**: Windsurf, Linear or Jira
+
+---
+
+## 🧩 Linked Backlog Epics (Cross-Reference)
+
+| Epic                                | Key Stories                                                  |
+|-------------------------------------|--------------------------------------------------------------|
+| Natural Language Query Interface    | Submit query, parse intent                                   |
+| Data Ingestion                      | Ingest real-time data, clean/deduplicate                     |
+| NLP Enrichment                      | Entity extraction, sentiment scoring                         |
+| Persona & Narrative Clustering      | Generate themes and personas                                 |
+| Frontend Dashboard                  | Explore insights, export data                                |
+| Admin Tools                         | Manage sources, ingestion metrics                            |
+| User Management                     | Login, saved queries, user profiles                          |
+| AI Insight Generation               | GPT-powered summaries and highlights                         |
+| Monitoring & Quality                | Quality scoring, human feedback loop                         |
+| API Access                          | REST/GraphQL access with API keys                            |
+
+---
+
+Let me know if you'd like this exported to a `.md` file, or converted into a Gantt chart, Trello board, or Windsurf-compatible spreadsheet.
