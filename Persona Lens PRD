@@ -1,0 +1,141 @@
+# Product Requirements Document (PRD)
+
+## Product Name: InsightLens – AI-Powered Open Data Intelligence Tool  
+**Author**: [Your Name]  
+**Date**: May 15, 2025  
+
+---
+
+## 1. Purpose
+
+**InsightLens** is a tool that enables users to input natural language queries and retrieve real-time, structured insights by searching across news, social media, and other open data sources. The tool will provide output in the form of **personas, brand profiles, sentiment analysis**, and **actionable insights**, tailored to marketers, analysts, founders, and strategy professionals.
+
+---
+
+## 2. Problem Statement
+
+Business and brand leaders struggle to synthesize real-time insights from fragmented public data sources (news, social, forums). Manual research is time-consuming and often incomplete. There is no accessible platform that leverages natural language input to automate this synthesis and generate analysis tailored to strategic needs (e.g., brand sentiment, emerging personas, competitor positioning).
+
+---
+
+## 3. Objectives and Goals
+
+- Allow users to type queries in natural language (e.g., “What do people think about Oura vs Whoop in 2025?”).
+- Retrieve and analyze data from multiple open sources (news, Reddit, Twitter/X, forums, blogs).
+- Provide:
+  - **Personas**: Behavioral and psychographic segments inferred from mentions.
+  - **Brand & Product Sentiment**: Quantitative and qualitative analysis of brand perception.
+  - **Narrative Clusters**: Trending topics and themes by audience segment.
+  - **Actionable Insights**: Emerging needs, opportunities, or risks.
+- Deliver results in an interactive, digestible interface.
+
+---
+
+## 4. User Stories
+
+| As a...          | I want to...                                                                 | So that...                                                      |
+|------------------|------------------------------------------------------------------------------|-----------------------------------------------------------------|
+| Product marketer | Ask “What are the key pain points consumers mention about Apple Vision Pro?” | I can improve messaging and roadmap                             |
+| Brand strategist | Ask “What’s the public perception of the Tesla brand in Europe?”             | I can inform repositioning strategies                           |
+| Founder          | Ask “How do Gen Z users talk about mental health apps?”                      | I can identify whitespace in the market                         |
+| Analyst          | Ask “What are the major themes in conversations about weight loss drugs?”    | I can track market and narrative shifts                         |
+
+---
+
+## 5. Features
+
+### 5.1 Natural Language Query Interface
+- Input: Text field with GPT-powered autocomplete/suggestions  
+- Output: Parsed intent and converted structured query for downstream processing
+
+### 5.2 Data Ingestion and Source Integration
+- Sources:
+  - News APIs (GNews, Event Registry)
+  - Social Media (X/Twitter, Reddit, TikTok transcripts, YouTube comments)
+  - Public forums and blogs
+- Web scraping infrastructure for non-API sources (robots.txt compliant)
+
+### 5.3 Data Enrichment and Classification
+- Entity recognition (brands, people, products, topics)
+- Sentiment classification (positive, neutral, negative)
+- Clustering of topics and themes
+- Demographic/psychographic inference (persona tagging)
+
+### 5.4 Insight Modules
+- **Persona Explorer**: Key archetypes derived from user language, behaviors, and psychographic signals
+- **Sentiment Dashboard**: Time-series, geography, and source breakdown of positive/negative sentiment
+- **Theme Mapper**: Clusters of narratives or keywords co-occurring with target topic
+- **Opportunity Radar**: AI-inferred strategic insights (unmet needs, white space, shifts in behavior)
+
+### 5.5 Output / Visualization
+- Interactive dashboards
+- Exportable reports (PDF, CSV, PPT)
+- Embed and API options
+
+---
+
+## 6. Functional Requirements
+
+| ID  | Requirement                                                                 |
+|-----|-----------------------------------------------------------------------------|
+| FR1 | The system shall accept a natural language query and parse it into search and analysis intents |
+| FR2 | The system shall fetch and update data from news, social, and forums dynamically |
+| FR3 | The system shall perform real-time sentiment analysis per brand or topic    |
+| FR4 | The system shall generate personas using clustering and classification techniques |
+| FR5 | The system shall present narrative clusters visually via graphs or word maps |
+| FR6 | The system shall support exporting of results in multiple formats           |
+
+---
+
+## 7. Non-Functional Requirements
+
+| ID   | Requirement                                                                 |
+|------|------------------------------------------------------------------------------|
+| NFR1 | System response time < 5 seconds for most queries                           |
+| NFR2 | 99.5% uptime                                                                |
+| NFR3 | Compliant with data access policies (robots.txt, API TOS)                   |
+| NFR4 | Scalable ingestion infrastructure (serverless/cloud-native preferred)       |
+| NFR5 | Secure storage and handling of user queries and generated insights          |
+
+---
+
+## 8. KPIs / Success Metrics
+
+- Time to insight: < 10 seconds  
+- Persona accuracy (manual validation): ≥ 85%  
+- Sentiment classification accuracy: ≥ 90%  
+- User NPS > 60  
+- Weekly active users (WAU) growth rate: 20% MoM (post-beta)  
+
+---
+
+## 9. Technical Architecture (High-level)
+
+1. **Frontend**
+   - React + Tailwind (UI)
+   - TypeScript
+   - Natural language input and results interface
+
+2. **Backend**
+   - Python / Node.js APIs
+   - GPT-4o or Claude for NLU and summarization
+   - Vector DB (e.g., Weaviate, Pinecone) for semantic search
+   - Sentiment/NER models (e.g., Hugging Face transformers)
+
+3. **Data Layer**
+   - News + Social ingestion pipelines (API + scraper)
+   - Real-time + batch processing via Kafka
+   - Data lake (S3 or GCS)
+
+4. **Deployment**
+   - Cloud-native (AWS / GCP)
+   - Docker + Kubernetes for orchestration
+
+---
+
+## 10. Open Questions
+
+- Which regions and languages are highest priority for localization?  
+- Should we offer a browser extension for contextual insights?  
+- Should user queries be saved and re-used for collaborative dashboards?  
+- Will this tool offer historical search, real-time monitoring, or both?  
