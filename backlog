@@ -1,0 +1,215 @@
+# 🗂️ InsightLens Product Backlog
+
+Comprehensive backlog organized by **Epics → User Stories → Acceptance Criteria**.
+
+---
+
+## 📌 EPIC 1: Natural Language Query Interface
+
+### User Story 1.1: Submit Natural Language Query
+- **As a** user  
+- **I want to** enter a plain text question (e.g., “What do Gen Z think about Ozempic?”)  
+- **So that** I can receive structured insights without needing to know technical search syntax
+
+**Acceptance Criteria**:
+- User can enter query in a text box
+- Query is sent to a backend NLU module
+- System confirms input was processed successfully
+
+---
+
+### User Story 1.2: Intent Detection and Parsing
+- **As a** backend system  
+- **I want to** extract intent, topic, region, time period, and target entities from the query  
+- **So that** I can generate the correct downstream pipeline for results
+
+**Acceptance Criteria**:
+- Parsed values stored in the `ParsedIntent` table
+- Accuracy of parsing is validated against benchmark set (>85%)
+
+---
+
+## 📌 EPIC 2: Data Ingestion & Storage
+
+### User Story 2.1: Ingest Real-Time Data
+- **As a** system  
+- **I want to** fetch data from news, Reddit, and Twitter  
+- **So that** I can supply fresh mentions for analysis
+
+**Acceptance Criteria**:
+- Scheduler or webhook pulls from APIs or scrapers
+- Raw content stored in `RawMention`
+- Metadata includes timestamp, author, source
+
+---
+
+### User Story 2.2: Deduplicate and Clean Mentions
+- **As a** system  
+- **I want to** normalize and clean raw content  
+- **So that** I can remove noise and improve analysis
+
+**Acceptance Criteria**:
+- Cleaning rules remove non-linguistic text
+- Deduplication by hash or similarity
+- Cleaned text saved in `EnrichedMention`
+
+---
+
+## 📌 EPIC 3: NLP Enrichment Pipeline
+
+### User Story 3.1: Extract Named Entities
+- **As a** data analyst  
+- **I want to** identify brands, people, and products in mentions  
+- **So that** I can understand who or what is being discussed
+
+**Acceptance Criteria**:
+- Entities stored in `EntityTag` with confidence
+- At least 90% precision/recall on test set
+
+---
+
+### User Story 3.2: Sentiment Analysis
+- **As a** strategist  
+- **I want to** know if a mention is positive, negative, or neutral  
+- **So that** I can gauge public opinion
+
+**Acceptance Criteria**:
+- Sentiment score and label stored in `SentimentScore`
+- Model version tracked
+- Sentiment visualized on frontend
+
+---
+
+## 📌 EPIC 4: Persona & Narrative Clustering
+
+### User Story 4.1: Generate Narrative Clusters
+- **As a** user  
+- **I want to** see groups of similar themes or topics  
+- **So that** I can spot emerging conversations or pain points
+
+**Acceptance Criteria**:
+- Topics clustered using semantic embeddings (e.g., BERTopic, LLM)
+- Labels automatically generated or manually editable
+- Results shown in dashboard and saved in `NarrativeCluster`
+
+---
+
+### User Story 4.2: Identify Persona Segments
+- **As a** product marketer  
+- **I want to** see different audience personas and how they talk  
+- **So that** I can tailor messaging
+
+**Acceptance Criteria**:
+- Personas labeled (e.g., “Biohackers”, “Concerned Parents”)
+- Demographic/psychographic inferences saved in `PersonaCluster`
+- Keywords and example quotes included
+
+---
+
+## 📌 EPIC 5: Frontend Interface & Dashboard
+
+### User Story 5.1: Interactive Insights Dashboard
+- **As a** user  
+- **I want to** view results in a visual dashboard  
+- **So that** I can explore personas, sentiment, and themes easily
+
+**Acceptance Criteria**:
+- Dashboard includes: sentiment graph, theme clusters, persona cards
+- Filters: time, source, sentiment, geography
+
+---
+
+### User Story 5.2: Export Insights
+- **As a** consultant  
+- **I want to** export charts and data to PDF/CSV  
+- **So that** I can include insights in reports
+
+**Acceptance Criteria**:
+- Export button available on all visualizations
+- Formats: PDF for charts, CSV for raw tables
+
+---
+
+## 📌 EPIC 6: Admin Tools & Source Management
+
+### User Story 6.1: Manage Data Sources
+- **As an** admin  
+- **I want to** add, disable, or configure ingestion sources  
+- **So that** I can control what data feeds the platform
+
+**Acceptance Criteria**:
+- Admin panel to add/edit `DataSource`
+- Ingestion metrics shown per source
+
+---
+
+## 📌 EPIC 7: User Management (Optional MVP+)
+
+### User Story 7.1: User Login and History
+- **As a** user  
+- **I want to** log in and view my past queries  
+- **So that** I can revisit past insights
+
+**Acceptance Criteria**:
+- OAuth support (Google, LinkedIn)
+- User history shown as cards with summary
+- Option to rerun or edit a past query
+
+---
+
+## 📌 EPIC 8: AI Insight Generation
+
+### User Story 8.1: Auto-Generated Strategic Insights
+- **As a** user  
+- **I want to** receive AI-summarized strategic takeaways  
+- **So that** I don’t have to interpret raw data myself
+
+**Acceptance Criteria**:
+- GPT-generated paragraph summaries per persona and cluster
+- “Opportunities” and “Risks” inferred automatically
+- Model outputs stored for transparency/versioning
+
+---
+
+## 📌 EPIC 9: Monitoring & Quality
+
+### User Story 9.1: Quality Scoring and Alerts
+- **As a** system  
+- **I want to** detect low quality or biased outputs  
+- **So that** I can flag for review or model retraining
+
+**Acceptance Criteria**:
+- Quality score logged per cluster
+- Threshold-based alerting
+- Manual override interface for editors
+
+---
+
+## 📌 EPIC 10: API & Embeddability
+
+### User Story 10.1: Programmatic API Access
+- **As a** developer  
+- **I want to** access insights via API  
+- **So that** I can embed them in internal tools or products
+
+**Acceptance Criteria**:
+- REST/GraphQL API with rate limiting
+- API key auth
+- Docs and examples provided
+
+---
+
+## ✅ Summary Table
+
+| Epic                                | Key Stories                                                  |
+|-------------------------------------|--------------------------------------------------------------|
+| Natural Language Query Interface    | Submit query, parse intent                                   |
+| Data Ingestion                      | Ingest real-time data, clean/deduplicate                     |
+| NLP Enrichment                      | Entity extraction, sentiment scoring                         |
+| Persona & Narrative Clustering      | Generate themes and personas                                 |
+| Frontend Dashboard                  | Explore insights, export data                                |
+| Admin Tools                         | Manage sources, track ingestion health                       |
+| User Management                     | Login, saved queries, user profiles                          |
+| AI Insight Generation               | Generate summaries, suggest strategy                         |
+| Monitoring & Quality                | Quality scoring, human feedback loop                         |
+| API Access                          | Provide embeddable, authenticated access                     |
